@@ -50,9 +50,9 @@ def send_email(to_name, to_email, company):
     Looking forward to your response.
 
     Best regards,
-    Aditya Bharti
-    📞 +91 8379084993
-    📧 adityabharti6088@gmail.com
+    #Your Nmae
+    📞 +91 #Mobile No
+    📧 #Your Email
     """
     
     msg.set_content(body)
