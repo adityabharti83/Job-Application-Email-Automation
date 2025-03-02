@@ -1,0 +1,84 @@
+Job Application Email Automation - Requirements Document
+
+ 1. Project Overview
+This project automates the process of sending job application emails to HR contacts extracted from a provided PDF. The script will:
+- Extract HR names, email addresses, and company names from the PDF.
+- Compose a personalized email for each HR.
+- Attach the applicant's resume.
+- Send emails one by one using Gmail SMTP.
+- Log all sent emails for tracking.
+
+ 2. File Structure & Format
+
+job_application/
+│── main.py                    Main script to send emails
+│── config.py                   Configuration file (email credentials)
+│── hr_contacts.pdf            Input file containing HR details
+│── resume.pdf                  Applicant's resume
+│── logs/                       Folder to store email logs
+│── logs/sent_emails.log        Log file tracking sent emails
+│── requirements.txt            Dependencies for the project
+│── requirements_doc.txt        This requirements document
+
+
+ File Details:
+- main.py: Python script that extracts emails and sends job applications.
+- config.py: Stores email credentials securely.
+- hr_contacts.pdf: The provided PDF containing HR details.
+- resume.pdf: Applicant's resume file in PDF format.
+- logs/sent_emails.log: Log file recording all successfully sent emails.
+- requirements.txt: Lists dependencies required for the project.
+- requirements_doc.txt: This document describing the project requirements.
+
+ 3. Dependencies
+Install required libraries before running the script:
+sh
+pip install pdfplumber
+
+To install dependencies from `requirements.txt`:
+sh
+pip install -r requirements.txt
+
+
+ 4. Setting Up Google App Passwords
+Since Google blocks less secure apps, an App Password is required for sending emails securely.
+
+Steps to Generate a Google App Password
+1. Enable 2-Step Verification (If Not Already Enabled):
+   - Go to [Google Account Security](https://myaccount.google.com/security)
+   - Under "How you sign in to Google", enable 2-Step Verification.
+   - Follow the setup steps (OTP, recovery options, etc.).
+
+2. Generate an App Password:
+   - Go to [Google App Passwords](https://myaccount.google.com/apppasswords)
+   - Sign in if prompted.
+   - Select "Mail" in the App dropdown.
+   - Select "Windows Computer" in the Device dropdown.
+   - Click "Generate".
+   - Copy the 16-character App Password (e.g., `abcd efgh ijkl mnop`).
+   - Store it safely as it will not be visible again.
+
+3. Use the App Password in `config.py`:
+   python
+   EMAIL_ADDRESS = "your_email@gmail.com"
+   EMAIL_PASSWORD = "abcd efgh ijkl mnop"   Use the generated app password
+   
+
+ 5. Running the Script
+Once all files are set up, run the script using:
+sh
+python main.py
+
+This will:
+- Extract emails from `hr_contacts.pdf`.
+- Send job application emails one by one.
+- Log successful emails in `logs/sent_emails.log`.
+
+ 6. Error Handling
+- Invalid email extraction: If emails are not properly extracted, check the `extract_contacts()` function.
+- SMTP authentication issues: Ensure the App Password is correctly configured.
+- Rate limiting issues: A delay of 2 seconds is included in the script to prevent Gmail blocking bulk emails.
+
+ 7. Conclusion
+This script streamlines the process of sending cold job application emails to HR contacts, making the job 
+search process more efficient and automated.
