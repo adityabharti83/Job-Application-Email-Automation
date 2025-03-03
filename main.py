@@ -63,10 +63,11 @@ def send_email(to_name, to_email, company):
     Looking forward to your response.
 
     Best regards,
-    Aditya Bharti
-    📞 +91 8379084993
-    📧 adityabharti6088@gmail.com
+    xyz xyz             #Add your name
+    📞 +91 9999999999   #Add your contact details
+    📧 xyz@gmail.com   
     """
+    #Change the position, Skill and your contact details drafted email
     
     msg.set_content(body)
     
